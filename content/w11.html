@@ -150,17 +150,84 @@ img.add_border {
 <p>Support Bobine_sldprt.prt</p>
 <p>Platine Batteur_sldprt.prt</p>
 <p>Flipper_sldprt.prt</p>
-<p>繪製檔案後轉為stl檔至coppeliaSim組合及試者模擬使其轉動。</p>
+<p>繪製檔案後轉為stl檔至<span style="background-color: #ffff99;">coppeliaSim組合</span>及試者<span style="background-color: #ffff99;">模擬使其轉動</span>。</p>
 <p>內容過程為三人一組製作，其中我的部分是將其中：</p>
-<p><span>Flipper_sldprt</span></p>
-<p><span>Plastique Flipper_sldprt </span></p>
-<p><span>Support Bobine_sldprt</span></p>
-<p><span>Plongeur Batteur_sldprt</span></p>
-<p><span>Piece composite_sldprt </span></p>
-<p><span>等五個圖形較為簡單的以<span style="background-color: #ffff99;">solvespace</span>繪製。</span></p>
-<p><span>--------------------------------------------------------------------------------------------------------------------</span></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/41223118_nfu_edu_tw/EaJGkd0qKmFNnB-4A7EAl9UBJct_xTSIqtY4Ip0MrIQIng?e=hMTHNd">Flipper_sldprt</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/41223118_nfu_edu_tw/Eay0e1Y0ZvFKh_myYtPGcrYBlIX0SaqhoNJqqWB4CVFlFQ?e=EfYvlb">Plastique Flipper_sldprt</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/41223118_nfu_edu_tw/EX4dId5_dJZBg0lf8Spq3ugBPiSQmrBgBxvRpqP3ZMVneA?e=6dpMIf">Support Bobine_sldprt</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/41223118_nfu_edu_tw/EX4dId5_dJZBg0lf8Spq3ugBPiSQmrBgBxvRpqP3ZMVneA?e=6dpMIf">Plongeur Batteur_sldprt</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/41223118_nfu_edu_tw/EeGOy_7udDNNicTFN1zGnuoBygIjFVX3SF9Paunlwq_9xw?e=apzKPk">Piece composite_sldprt </a></p>
+<p><span>等五個圖形較為簡單的以<span style="background-color: #ffff99;">solvespace</span>繪製。(此為<span style="background-color: #ffff99;">STL</span>，需SLVS請點擊這)</span></p>
+<p><span>------------------------------------------------------------------------------------------------------------------</span></p>
 <p><span>以下為課後繪製結果：</span></p>
-<p><span></span></p><br />solv_part5 << <a href='solv_part5.html'>Previous</a> <a href='solv_part13.html'>Next</a> >> solv_part13</div>
+<script src="./../cmsimde/static/jsc3d.js" type="text/javascript"></script>
+<div id="models"><!-- 增加5個畫布元素 --> <canvas height="300" id="cv1" style="border: 1px solid;" width="400"></canvas> <canvas height="300" id="cv2" style="border: 1px solid;" width="400"></canvas> <canvas height="300" id="cv3" style="border: 1px solid;" width="400"></canvas> <canvas height="300" id="cv4" style="border: 1px solid;" width="400"></canvas> <canvas height="300" id="cv5" style="border: 1px solid;" width="400"></canvas></div>
+<div style="width: 400px; height: 70px; border: 1px solid;">Model Color:<input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1:<input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2:<input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/><br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
+<option>Flat</option>
+<option>Point</option>
+<option>Wireframe</option>
+<option>Smooth</option>
+</select>Definition:<select id="defini" onchange="changeOption('Definition',this.value)">
+<option>Standard</option>
+<option>low</option>
+<option>high</option>
+</select></div>
+<script type="text/javascript">
+var viewers = [];
+
+function getOptions() {
+    var mc = document.getElementById("mdlClr").value;
+    var bc1 = document.getElementById("bckClr1").value;
+    var bc2 = document.getElementById("bckClr2").value;
+    var ren = document.getElementById("render").value;
+    var def = document.getElementById("defini").value;
+    return { ModelColor: mc, BackgroundColor1: bc1, BackgroundColor2: bc2, RenderMode: ren, Definition: def };
+}
+
+function readSTLfile(opt, canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var viewer = new JSC3D.Viewer(canvas);
+    viewer.setParameter('SceneUrl', opt.SceneUrl);
+    viewer.setParameter('InitRotationX', 0);
+    viewer.setParameter('InitRotationY', 0);
+    viewer.setParameter('InitRotationZ', 0);
+    viewer.setParameter('ModelColor', opt.ModelColor);
+    viewer.setParameter('BackgroundColor1', opt.BackgroundColor1);
+    viewer.setParameter('BackgroundColor2', opt.BackgroundColor2);
+    viewer.setParameter('RenderMode', opt.RenderMode);
+    viewer.setParameter('Definition', opt.Definition);
+    viewer.init();
+    viewer.update();
+    viewers.push(viewer); // 保存 viewer 實例
+}
+
+function changeOption(strOpt, strValue) {
+    console.log("change " + strOpt + " to " + strValue);
+    viewers.forEach(viewer => {
+        viewer.setParameter(strOpt, strValue);
+        viewer.init();
+        viewer.update();
+    });
+}
+
+function openByGet() {
+    var urls = [
+        "https://s104.cycu.org/~pj2023/cad2024_part_ex1_solvespace.stl",
+        "https://s104.cycu.org/~scrum1/41223199_part99.stl",
+        "https://s104.cycu.org/~scrum1/41223200_part100.stl",
+        "https://s104.cycu.org/~scrum1/41223201_part101.stl",
+        "https://s104.cycu.org/~scrum1/41223202_part102.stl"
+    ];
+    var opt = getOptions();
+    urls.forEach((url, index) => {
+        opt.SceneUrl = url;
+        readSTLfile(opt, 'cv' + (index + 1)); // 動態生成 canvas ID
+    });
+}
+
+openByGet();
+</script>
+<p></p><br />solv_part5 << <a href='solv_part5.html'>Previous</a> <a href='solv_part13.html'>Next</a> >> solv_part13</div>
         
     <!-- footer -->
       <div class="container">

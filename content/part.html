@@ -2,7 +2,7 @@
         <head>
         <title>cad_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -141,106 +141,33 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">課前預習 << <a href='課前預習.html'>Previous</a> <a href='solv_part5.html'>Next</a> >> solv_part5<br /><h1>w10</h1>
-<p><span style="background-color: #ccffcc;">(這裡放了在w10課堂小考內容，只有放置了在課程時間內所完成進度，其餘內容及完整影片皆放置在另一頁面。)</span></p>
-<p><em><strong><a href="https://mdecad2024.github.io/hw-zhe41223118/content/w10-exam.html">點擊這裡前往觀看</a></strong></em></p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/zRCpsiyLtys?si=bwTo9zWc7M_b87VW" title="YouTube video player" width="560"></iframe></p>
-<p><a href="https://mdecad2024.github.io/hw-zhe41223118/cmsimde/static/viewstl.html?src=https://s104.cycu.org/~41223118/41223118_eaam1.stl">https://mdecad2024.github.io/hw-zhe41223118/cmsimde/static/viewstl.html?src=https://s104.cycu.org/~41223118/41223118_exam1.stl</a></p>
-<p></p>
-<script src="./../cmsimde/static/jsc3d.js" type="text/javascript"></script>
-<p><canvas height="400" id="cv" style="border: 1px solid;" width="550"></canvas></p>
-<div style="width: 800px; height: 70px; border: 1px solid;">Model Color:<input id="mdlClr" onchange="changeOption('ModelColor',this.value)" style="margin-right: 50px;" type="color" value="#00ff40"/> Back Color1:<input id="bckClr1" onchange="changeOption('BackgroundColor1',this.value)" style="margin-right: 50px;" type="color"/> Back Color2:<input id="bckClr2" onchange="changeOption('BackgroundColor2',this.value)" type="color"/><br/> Render Mode:<select id="render" onchange="changeOption('RenderMode',this.value)">
-<option>Flat</option>
-<option>Point</option>
-<option>Wireframe</option>
-<option>Smooth</option>
-</select>Definition:<select id="defini" onchange="changeOption('Definition',this.value)">
-<option>Standard</option>
-<option>low</option>
-<option>high</option>
-</select></div>
-<script type="text/javascript">
-var viewer3d;
-    function getOptions(){
-        var mc = document.getElementById("mdlClr").value;
-        var bc1 = document.getElementById("bckClr1").value;
-        var bc2 = document.getElementById("bckClr2").value;
-        var ren = document.getElementById("render").value;
-        var def = document.getElementById("defini").value;
-        return {ModelColor: mc,
-                BackgroundColor1: bc1,
-                BackgroundColor2: bc2,
-                RenderMode: ren,
-                Definition: def};
-    }
-    function readSTLfile(opt){
-        var canvas = document.getElementById('cv');
-        viewer3d = new JSC3D.Viewer(canvas);
-        viewer3d.setParameter('SceneUrl', opt.SceneUrl);
-        viewer3d.setParameter('InitRotationX', 0);
-        viewer3d.setParameter('InitRotationY', 0);
-        viewer3d.setParameter('InitRotationZ', 0);
-        viewer3d.setParameter('ModelColor', opt.ModelColor);
-        viewer3d.setParameter('BackgroundColor1', opt.BackgroundColor1);
-        viewer3d.setParameter('BackgroundColor2', opt.BackgroundColor2);
-        viewer3d.setParameter('RenderMode', opt.RenderMode);
-        viewer3d.setParameter('Definition', opt.Definition);
-        viewer3d.init();
-        viewer3d.update();
-    }
-    function changeOption(strOpt,strValue){
-    console.log("change " + strOpt + " to " + strValue);
-        viewer3d.setParameter(strOpt, strValue);
-        viewer3d.init();
-        viewer3d.update();
-    }
-    function openByUrl(){
-        var url = document.getElementById("url").value;
-        var opt = getOptions();
-        opt.SceneUrl = document.getElementById("url").value;
-        readSTLfile(opt);
-    }
-    function openByPass(){
-        var pass = document.getElementById("url").value;
-        var opt = getOptions();
-        var fs = document.getElementById("pass").files;
-        var f = fs[0];
-        var reader = new FileReader();
-        reader.onload = (function(theFile) {
-            return function(e) {            
-                opt.SceneUrl = e.target.result;
-                console.log(opt.SceneUrl);
-                readSTLfile(opt);
-            };
-        })(f);
-        reader.readAsDataURL(f);
-    }
-    function openByGet(){
-        var url = "https://s104.cycu.org/~41223118/41223118_eaam1.stl";
-        var opt = getOptions();
-        opt.SceneUrl = url;
-        readSTLfile(opt);
-    }
-    function GetQueryString(){
-        if( 1 < window.location.search.length )
-        {
-            var query = window.location.search.substring( 1 );
-            var parameters = query.split( '&' );
-            var result = new Object();
-            for( var i = 0; i < parameters.length; i++ )
-            {
-                var element = parameters[ i ].split( '=' );
-                var paramName = decodeURIComponent( element[ 0 ] );
-                var paramValue = decodeURIComponent( element[ 1 ] );
-                result[ paramName ] = decodeURIComponent( paramValue );
-            }
-            return result;
-        }
-        return null;
-    }
-    openByGet();
-</script>
-<p><strong><span style="background-color: #ccffcc;">(註：本周重點為<a href="https://mde.tw/cad2024/content/Exam1.html">課程小考</a>，以solvespace和NX分別繪製所要求題目，並填寫完teams表單，題目分三題，第二題NX部分將再w11講解)</span></strong></p><br />課前預習 << <a href='課前預習.html'>Previous</a> <a href='solv_part5.html'>Next</a> >> solv_part5</div>
+    <div id="tipue_search_content">HW4_Exam << <a href='HW4_Exam.html'>Previous</a> <a href='Picture file.html'>Next</a> >> Picture file<br /><h1>part</h1>
+<p><span style="background-color: #ffff99;"><strong>part3</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/4YdYlGfhzUw?si=nQNT9LV-rxD3wJ2O" title="YouTube video player" width="560"></iframe></p>
+<p><span style="background-color: #ffff99;"><strong>part4</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/ioDZhodKt3U?si=3GZp3_AUKJpFUU72" title="YouTube video player" width="560"></iframe></p>
+<p><span style="background-color: #ffff99;"><strong>part5</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/c3Cut3gd7Ew?si=-0dhT-34pLWoULki" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part6</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/2U_lTx7j9wI?si=gziz9fo21I1WLB5L" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part7</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/X5oHUeITyLk?si=-iu6O7Kx9rCRpLyT" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part8</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/0T8okf3jI1Q?si=rH1P9XMHs7yLrcY6" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part9</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/r_I3EoDqoXg?si=tXsUk4JMIUTTOAGa" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part10</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/3qEL_7TB9FI?si=eXh4DLiuPl7-X8MN" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part11</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/vF54QaxpaM4?si=ejgM-Z-0lYmW_VgY" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part12</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/HRawH7RhrJw?si=reBLBs0KvAqmAHQE" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ffff99;"><strong>part13</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/UVsB2VwURTQ?si=PQXH1hc2cQkEnpct" title="YouTube video player" width="560"></iframe><span style="background-color: #ffff99;"><strong></strong></span></p>
+<p><strong>-----------------------------------------------------------------------------------------------------------</strong></p>
+<p><span style="background-color: #ccffff;"><strong>part1</strong></span></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Njds6I0V-us?si=3djNdn0f4YC7yM_0" title="YouTube video player" width="560"></iframe><strong></strong></p>
+<p><span style="background-color: #ccffff;"><strong>part2</strong></span></p><br />HW4_Exam << <a href='HW4_Exam.html'>Previous</a> <a href='Picture file.html'>Next</a> >> Picture file</div>
         
     <!-- footer -->
       <div class="container">
